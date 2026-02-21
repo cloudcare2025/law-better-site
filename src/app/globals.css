@@ -1,0 +1,453 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Law Better LLC -- Design System
+   A conversion-first design system built for a premium legal technology brand.
+   Deep navy authority. Gold accent trust. Clean, modern, fast.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   Custom Properties
+   --------------------------------------------------------------------------- */
+@theme {
+  --color-navy: #0a1628;
+  --color-navy-light: #111d32;
+  --color-navy-mid: #1a2940;
+  --color-gold: #c9a84c;
+  --color-gold-light: #d4b96a;
+  --color-gold-dark: #b0912e;
+  --color-warm-white: #fafaf8;
+  --color-slate: #334155;
+  --color-slate-light: #64748b;
+  --color-light-gray: #f1f5f9;
+  --color-border: #e2e8f0;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------------------------
+   Base Styles
+   --------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-slate);
+  background-color: var(--color-warm-white);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Typography Scale
+   --------------------------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-navy);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+h4 {
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+}
+
+p {
+  max-width: 68ch;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-gold-dark);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-gold);
+}
+
+/* ---------------------------------------------------------------------------
+   Selection
+   --------------------------------------------------------------------------- */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+}
+
+/* ---------------------------------------------------------------------------
+   Focus Visible (Accessibility)
+   --------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Gradient Overlays
+   --------------------------------------------------------------------------- */
+.overlay-gradient-dark {
+  position: relative;
+}
+
+.overlay-gradient-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 22, 40, 0.85) 0%,
+    rgba(10, 22, 40, 0.6) 50%,
+    rgba(10, 22, 40, 0.9) 100%
+  );
+  pointer-events: none;
+}
+
+.overlay-gradient-gold {
+  position: relative;
+}
+
+.overlay-gradient-gold::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(201, 168, 76, 0.1) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Glass Morphism
+   --------------------------------------------------------------------------- */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(10, 22, 40, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-gold {
+  background: rgba(201, 168, 76, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll-Triggered Animations
+   --------------------------------------------------------------------------- */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out both;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out both;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out both;
+}
+
+/* Staggered delay utilities */
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* ---------------------------------------------------------------------------
+   Button Styles
+   --------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  line-height: 1;
+  padding: 0.875rem 1.75rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+  min-height: 44px;
+  min-width: 120px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Primary: Gold on Navy -- the conversion trigger */
+.btn-primary {
+  background-color: var(--color-gold);
+  color: var(--color-navy);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold-light);
+  color: var(--color-navy);
+  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.35);
+}
+
+/* Secondary: Outlined navy -- supporting action */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-navy);
+  box-shadow: inset 0 0 0 1.5px var(--color-navy);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-navy);
+  color: var(--color-warm-white);
+}
+
+/* Ghost: Light, minimal presence -- tertiary actions */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-slate);
+  padding: 0.75rem 1rem;
+}
+
+.btn-ghost:hover {
+  background-color: var(--color-light-gray);
+  color: var(--color-navy);
+}
+
+/* Light variant for dark backgrounds */
+.btn-light {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-warm-white);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.btn-light:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Small variant */
+.btn-sm {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.8125rem;
+  min-height: 36px;
+}
+
+/* Large variant */
+.btn-lg {
+  padding: 1rem 2.25rem;
+  font-size: 1.0625rem;
+  min-height: 52px;
+  border-radius: 10px;
+}
+
+/* ---------------------------------------------------------------------------
+   Utility: Section Padding
+   --------------------------------------------------------------------------- */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6.5rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 8rem 2rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Utility: Container
+   --------------------------------------------------------------------------- */
+.container-narrow {
+  width: 100%;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-content {
+  width: 100%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-wide {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Utility: Text Gradient
+   --------------------------------------------------------------------------- */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---------------------------------------------------------------------------
+   Utility: Divider
+   --------------------------------------------------------------------------- */
+.divider-gold {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+   Hero Floating Orbs
+   --------------------------------------------------------------------------- */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Prefers Reduced Motion
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
