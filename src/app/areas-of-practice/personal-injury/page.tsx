@@ -70,6 +70,25 @@ const services: Service[] = [
    Icons
    ========================================================================== */
 
+function ChevronRightIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  );
+}
+
 function CheckIcon() {
   return (
     <svg
@@ -83,7 +102,7 @@ function CheckIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
-      className="shrink-0 text-[#c9a84c]"
+      className="shrink-0 text-[#1A5C6B]"
     >
       <path d="m9 12 2 2 4-4" />
       <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
@@ -136,8 +155,8 @@ function ScaleIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="28"
-      height="28"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -145,7 +164,7 @@ function ScaleIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
-      className="text-[#c9a84c]"
+      className="shrink-0 text-[#1A5C6B]"
     >
       <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
       <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
@@ -166,14 +185,14 @@ export default function PersonalInjuryPage() {
       {/* ================================================================
           INTERIOR HERO
           ================================================================ */}
-      <section className="relative flex items-end overflow-hidden bg-[#0a1628] pb-16 pt-32 sm:pb-20 sm:pt-36 md:pb-24 md:pt-40">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0f1d32] to-[#0a1628]" />
+      <section className="relative flex items-end overflow-hidden bg-[#0F1D2A] pb-16 pt-32 sm:pb-20 sm:pt-36 md:pb-24 md:pt-40">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F1D2A] via-[#162330] to-[#0F1D2A]" />
 
         <div
           className="absolute right-[10%] top-[20%] h-[400px] w-[400px] rounded-full opacity-[0.05]"
           style={{
             background:
-              "radial-gradient(circle, #c9a84c 0%, transparent 70%)",
+              "radial-gradient(circle, #1A5C6B 0%, transparent 70%)",
           }}
         />
 
@@ -189,63 +208,64 @@ export default function PersonalInjuryPage() {
         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-2 text-sm">
+            <ol className="flex items-center gap-1.5 text-sm">
               <li>
                 <Link
                   href="/"
-                  className="text-white/40 no-underline transition-colors duration-200 hover:text-white/70"
+                  className="text-[#F1EDE8]/50 no-underline transition-colors duration-200 hover:text-[#F1EDE8]"
                 >
                   Home
                 </Link>
               </li>
-              <li className="text-white/20" aria-hidden="true">
-                /
+              <li className="text-[#F1EDE8]/30">
+                <ChevronRightIcon />
               </li>
               <li>
                 <Link
                   href="/areas-of-practice"
-                  className="text-white/40 no-underline transition-colors duration-200 hover:text-white/70"
+                  className="text-[#F1EDE8]/50 no-underline transition-colors duration-200 hover:text-[#F1EDE8]"
                 >
                   Areas of Practice
                 </Link>
               </li>
-              <li className="text-white/20" aria-hidden="true">
-                /
+              <li className="text-[#F1EDE8]/30">
+                <ChevronRightIcon />
               </li>
-              <li className="font-medium text-[#c9a84c]">Personal Injury</li>
+              <li className="font-medium text-[#1A5C6B]">Personal Injury</li>
             </ol>
           </nav>
 
-          <div className="divider-gold mb-5" />
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+          <div className="divider-accent mb-5" />
+          <h1 className="font-serif text-[#F1EDE8]">
             Personal Injury
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/50 sm:text-xl">
+          <p className="mt-4 max-w-2xl text-lg text-[#F1EDE8]/50 sm:text-xl">
             Justice for the Injured
           </p>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#fafaf8] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FAFAF8] to-transparent" />
       </section>
 
       {/* ================================================================
-          CONTENT
+          WHAT WE HANDLE
           ================================================================ */}
-      <section className="section-padding bg-[#fafaf8]">
-        <div className="mx-auto max-w-4xl px-5 sm:px-8">
+      <section className="section-padding bg-[#FAFAF8]">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
           {/* Overview */}
-          <div className="mb-16">
-            <h2 className="mb-6 text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl">
+          <div className="mb-16 max-w-3xl">
+            <div className="divider-accent mb-5" />
+            <h2 className="font-serif text-[#1C2A32]">
               Relentless Advocacy When It Matters Most
             </h2>
-            <p className="mb-4 text-base leading-relaxed text-[#64748b] md:text-lg">
+            <p className="mt-5 mb-4 text-base leading-relaxed text-[#5A6B75] md:text-lg">
               Since 2018, John P. Baglia has dedicated his career to advocating
               for individuals and families in some of life&apos;s most difficult
               times. He has built his practice on exhaustive preparation, sharp
               litigation strategy, and an unwavering commitment to achieving
               results.
             </p>
-            <p className="text-base leading-relaxed text-[#64748b] md:text-lg">
+            <p className="text-base leading-relaxed text-[#5A6B75] md:text-lg">
               Mr. Baglia is an experienced litigation attorney focusing on
               trucking accidents, automobile collisions, personal injury, and
               wrongful death. In just seven years, he has helped secure millions
@@ -255,44 +275,50 @@ export default function PersonalInjuryPage() {
 
           {/* Services Grid */}
           <div className="mb-16">
-            <h2 className="mb-8 text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl">
+            <h3 className="mb-8 font-serif text-[#1C2A32]">
               Cases We Handle
-            </h2>
+            </h3>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
               {services.map((service) => (
                 <div
                   key={service.title}
-                  className="rounded-xl border border-[#e2e8f0] bg-white p-6 transition-all duration-200 hover:border-[#c9a84c]/20 hover:shadow-[0_4px_20px_rgba(0,0,0,0.04)]"
+                  className="rounded-xl border border-[#E8E4DF] bg-white p-6 transition-all duration-200 hover:border-[#1A5C6B]/20 hover:shadow-[0_4px_20px_rgba(15,29,42,0.05)]"
                 >
                   <div className="mb-3 flex items-center gap-3">
                     <CheckIcon />
-                    <h3 className="text-base font-bold text-[#0a1628]">
+                    <h4 className="text-base font-semibold text-[#1C2A32]" style={{ fontFamily: "var(--font-body)" }}>
                       {service.title}
-                    </h3>
+                    </h4>
                   </div>
-                  <p className="text-sm leading-relaxed text-[#64748b]">
+                  <p className="text-sm leading-relaxed text-[#5A6B75]">
                     {service.description}
                   </p>
                 </div>
               ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Why Choose Us */}
-          <div className="mb-16 rounded-2xl border border-[#e2e8f0] bg-white p-8 sm:p-10">
-            <div className="mb-4 flex items-start gap-3">
+      {/* ================================================================
+          OUR APPROACH
+          ================================================================ */}
+      <section className="section-padding bg-[#F5F2EE]">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8 lg:px-10">
+          <div className="rounded-2xl border border-[#E8E4DF] bg-white p-8 sm:p-10">
+            <div className="mb-5 flex items-start gap-3">
               <ScaleIcon />
-              <h2 className="text-xl font-bold tracking-tight text-[#0a1628] sm:text-2xl">
+              <h3 className="font-serif text-[#1C2A32]">
                 Our Approach to Personal Injury
-              </h2>
+              </h3>
             </div>
-            <p className="mb-4 text-base leading-relaxed text-[#64748b]">
+            <p className="mb-4 text-base leading-relaxed text-[#5A6B75]">
               Personal injury cases demand more than legal knowledge -- they
               demand preparation that leaves nothing to chance. Mr. Baglia
               investigates every detail, consults with experts, and builds cases
               designed to maximize recovery for his clients.
             </p>
-            <p className="text-base leading-relaxed text-[#64748b]">
+            <p className="text-base leading-relaxed text-[#5A6B75]">
               Insurance companies have teams of lawyers protecting their bottom
               line. You deserve an attorney who fights just as hard for yours.
               At Law Better, we level the playing field and hold negligent
@@ -305,20 +331,20 @@ export default function PersonalInjuryPage() {
       {/* ================================================================
           CTA SECTION
           ================================================================ */}
-      <section className="relative overflow-hidden bg-[#0a1628] py-24 sm:py-32">
+      <section className="dark-section relative overflow-hidden bg-[#0F1D2A] py-24 sm:py-32">
         <div
           className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.04]"
           style={{
             background:
-              "radial-gradient(circle, #c9a84c 0%, transparent 70%)",
+              "radial-gradient(circle, #1A5C6B 0%, transparent 70%)",
           }}
         />
 
         <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="font-serif text-[#F1EDE8]">
             Injured? Get the Representation You Deserve.
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/50 md:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed md:text-lg">
             Schedule a free consultation to discuss your case. There is no fee
             unless we recover compensation for you.
           </p>
@@ -328,7 +354,7 @@ export default function PersonalInjuryPage() {
               href={CONSULTATION_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-lg group inline-flex items-center gap-2.5 rounded-xl bg-[#c9a84c] px-8 py-4 text-base font-semibold text-[#0a1628] shadow-lg shadow-[#c9a84c]/20 transition-all duration-200 no-underline hover:bg-[#d4b96a] hover:shadow-xl hover:shadow-[#c9a84c]/30 active:scale-[0.98]"
+              className="btn btn-primary btn-lg inline-flex items-center gap-2.5"
             >
               <CalendarIcon />
               Schedule Free Consultation
@@ -336,10 +362,12 @@ export default function PersonalInjuryPage() {
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-2">
-            <PhoneIcon />
+            <span className="text-[#F1EDE8]/40">
+              <PhoneIcon />
+            </span>
             <a
               href={PHONE_HREF}
-              className="text-base font-medium text-white/60 no-underline transition-colors duration-200 hover:text-white"
+              className="text-base font-medium text-[#F1EDE8]/60 no-underline transition-colors duration-200 hover:text-[#F1EDE8]"
             >
               {PHONE_NUMBER}
             </a>

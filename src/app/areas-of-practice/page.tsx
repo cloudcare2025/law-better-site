@@ -15,6 +15,7 @@ interface PracticeAreaCard {
   description: string;
   href: string;
   icon: React.ReactNode;
+  services: string[];
 }
 
 const practiceAreas: PracticeAreaCard[] = [
@@ -24,6 +25,14 @@ const practiceAreas: PracticeAreaCard[] = [
       "Divorce, custody, child support, orders of protection, and domestic disputes. We fight for your family's future.",
     href: "/areas-of-practice/family-law",
     icon: <FamilyIcon />,
+    services: [
+      "Divorce",
+      "Child Custody",
+      "Child Support",
+      "Orders of Protection",
+      "Domestic Disputes",
+      "Guardian Ad Litem",
+    ],
   },
   {
     title: "Estate Planning",
@@ -31,6 +40,13 @@ const practiceAreas: PracticeAreaCard[] = [
       "Wills, trusts, powers of attorney. Protect what matters most with a plan built for your peace of mind.",
     href: "/areas-of-practice/estate-planning",
     icon: <EstateIcon />,
+    services: [
+      "Wills",
+      "Trusts",
+      "Powers of Attorney",
+      "Guardianships",
+      "Estate Administration",
+    ],
   },
   {
     title: "Business Law",
@@ -38,6 +54,13 @@ const practiceAreas: PracticeAreaCard[] = [
       "Business formation, service, and litigation. From startup to courtroom, we've got you covered.",
     href: "/areas-of-practice/business-law",
     icon: <BusinessIcon />,
+    services: [
+      "Business Formation",
+      "Business Litigation",
+      "Contract Disputes",
+      "Civil Disputes",
+      "Compliance",
+    ],
   },
   {
     title: "Personal Injury",
@@ -45,12 +68,39 @@ const practiceAreas: PracticeAreaCard[] = [
       "Wrongful death, car accidents, slip and fall, dog bite litigation, premises liability. Justice for the injured.",
     href: "/areas-of-practice/personal-injury",
     icon: <InjuryIcon />,
+    services: [
+      "Wrongful Death",
+      "Car Accidents",
+      "Trucking Accidents",
+      "Slip and Fall",
+      "Dog Bite Litigation",
+      "Premises Liability",
+    ],
   },
 ];
 
 /* ==========================================================================
    Icons (inline SVG for zero network requests)
    ========================================================================== */
+
+function ChevronRightIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  );
+}
 
 function FamilyIcon() {
   return (
@@ -128,8 +178,11 @@ function InjuryIcon() {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-      <path d="m4.93 4.93 14.14 14.14" />
+      <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+      <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+      <path d="M7 21h10" />
+      <path d="M12 3v18" />
+      <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
     </svg>
   );
 }
@@ -185,18 +238,19 @@ export default function AreasOfPracticePage() {
     <>
       {/* ================================================================
           INTERIOR HERO
-          Navy gradient, breadcrumb context, clear heading.
+          Dark bg, breadcrumb context, DM Serif Display heading.
+          Teal gradient orb. Grid pattern overlay.
           ================================================================ */}
-      <section className="relative flex items-end overflow-hidden bg-[#0a1628] pb-16 pt-32 sm:pb-20 sm:pt-36 md:pb-24 md:pt-40">
+      <section className="relative flex items-end overflow-hidden bg-[#0F1D2A] pb-16 pt-32 sm:pb-20 sm:pt-36 md:pb-24 md:pt-40">
         {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0f1d32] to-[#0a1628]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F1D2A] via-[#162330] to-[#0F1D2A]" />
 
-        {/* Subtle gold orb */}
+        {/* Subtle teal orb */}
         <div
           className="absolute right-[10%] top-[20%] h-[400px] w-[400px] rounded-full opacity-[0.05]"
           style={{
             background:
-              "radial-gradient(circle, #c9a84c 0%, transparent 70%)",
+              "radial-gradient(circle, #1A5C6B 0%, transparent 70%)",
           }}
         />
 
@@ -213,73 +267,85 @@ export default function AreasOfPracticePage() {
         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-6">
-            <ol className="flex items-center gap-2 text-sm">
+            <ol className="flex items-center gap-1.5 text-sm">
               <li>
                 <Link
                   href="/"
-                  className="text-white/40 no-underline transition-colors duration-200 hover:text-white/70"
+                  className="text-[#F1EDE8]/50 no-underline transition-colors duration-200 hover:text-[#F1EDE8]"
                 >
                   Home
                 </Link>
               </li>
-              <li className="text-white/20" aria-hidden="true">
-                /
+              <li className="text-[#F1EDE8]/30">
+                <ChevronRightIcon />
               </li>
-              <li className="text-[#c9a84c] font-medium">
+              <li className="font-medium text-[#1A5C6B]">
                 Areas of Practice
               </li>
             </ol>
           </nav>
 
           {/* Heading */}
-          <div className="divider-gold mb-5" />
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+          <div className="divider-accent mb-5" />
+          <h1 className="font-serif text-[#F1EDE8]">
             Areas of Practice
           </h1>
-          <p className="mt-4 max-w-2xl text-base text-white/50 sm:text-lg">
+          <p className="mt-4 max-w-2xl text-base text-[#F1EDE8]/50 sm:text-lg">
             Experienced legal counsel across the areas that matter most to you
             and your family.
           </p>
         </div>
 
         {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#fafaf8] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FAFAF8] to-transparent" />
       </section>
 
       {/* ================================================================
           PRACTICE AREA CARDS
-          Grid of 4, each linking to its subpage.
+          Bento grid of 4 cards -- larger, more detailed than homepage.
           ================================================================ */}
-      <section className="section-padding bg-[#fafaf8]">
+      <section className="section-padding bg-[#FAFAF8]">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {practiceAreas.map((area) => (
               <Link
                 key={area.title}
                 href={area.href}
-                className="group relative rounded-2xl border border-[#e2e8f0] bg-white p-8 no-underline transition-all duration-300 hover:-translate-y-1 hover:border-[#c9a84c]/30 hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] sm:p-10"
+                className="group relative overflow-hidden rounded-2xl border border-[#E8E4DF] bg-white p-8 no-underline transition-all duration-300 hover:-translate-y-1 hover:border-[#1A5C6B]/30 hover:shadow-[0_8px_40px_rgba(15,29,42,0.08)] sm:p-10"
               >
                 {/* Icon */}
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#0a1628]/[0.04] text-[#0a1628] transition-colors duration-300 group-hover:bg-[#c9a84c]/10 group-hover:text-[#c9a84c]">
+                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#1A5C6B]/[0.08] text-[#1A5C6B] transition-colors duration-300 group-hover:bg-[#1A5C6B]/[0.14]">
                   {area.icon}
                 </div>
 
                 {/* Content */}
-                <h3 className="mb-3 text-xl font-bold text-[#0a1628] transition-colors group-hover:text-[#0a1628]">
+                <h3 className="mb-3 font-serif text-[#1C2A32]">
                   {area.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-[#64748b]">
+                <p className="mb-6 text-sm leading-relaxed text-[#5A6B75]">
                   {area.description}
                 </p>
 
+                {/* Service pills */}
+                <div className="mb-6 flex flex-wrap gap-2">
+                  {area.services.map((service) => (
+                    <span
+                      key={service}
+                      className="rounded-full border border-[#1A5C6B]/15 bg-[#1A5C6B]/[0.05] px-3 py-1 text-xs font-medium text-[#1A5C6B]"
+                    >
+                      {service}
+                    </span>
+                  ))}
+                </div>
+
                 {/* Arrow indicator */}
-                <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-[#c9a84c] opacity-0 transition-all duration-300 group-hover:opacity-100">
+                <div className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1A5C6B] opacity-0 transition-all duration-300 group-hover:opacity-100">
                   Learn more
                   <ArrowRight />
                 </div>
 
-                {/* Subtle gold accent line on hover */}
-                <div className="absolute bottom-0 left-8 right-8 h-[2px] rounded-full bg-gradient-to-r from-[#c9a84c] to-[#d4b96a] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                {/* Accent line on hover */}
+                <div className="absolute bottom-0 left-8 right-8 h-[2px] rounded-full bg-gradient-to-r from-[#1A5C6B] to-[#C4963C] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </Link>
             ))}
           </div>
@@ -289,20 +355,20 @@ export default function AreasOfPracticePage() {
       {/* ================================================================
           CTA SECTION
           ================================================================ */}
-      <section className="relative overflow-hidden bg-[#0a1628] py-24 sm:py-32">
+      <section className="dark-section relative overflow-hidden bg-[#0F1D2A] py-24 sm:py-32">
         <div
           className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.04]"
           style={{
             background:
-              "radial-gradient(circle, #c9a84c 0%, transparent 70%)",
+              "radial-gradient(circle, #1A5C6B 0%, transparent 70%)",
           }}
         />
 
         <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="font-serif text-[#F1EDE8]">
             Not Sure Where to Start?
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/50 md:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed md:text-lg">
             Schedule a free consultation and we&apos;ll help you understand your
             options and build a path forward.
           </p>
@@ -312,7 +378,7 @@ export default function AreasOfPracticePage() {
               href={CONSULTATION_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-lg group inline-flex items-center gap-2.5 rounded-xl bg-[#c9a84c] px-8 py-4 text-base font-semibold text-[#0a1628] shadow-lg shadow-[#c9a84c]/20 transition-all duration-200 no-underline hover:bg-[#d4b96a] hover:shadow-xl hover:shadow-[#c9a84c]/30 active:scale-[0.98]"
+              className="btn btn-primary btn-lg inline-flex items-center gap-2.5"
             >
               <CalendarIcon />
               Schedule Free Consultation

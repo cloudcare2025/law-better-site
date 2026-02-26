@@ -148,6 +148,25 @@ const teamMembers: TeamMemberData[] = [
    Icons (inline SVG for zero network requests)
    ========================================================================== */
 
+function ChevronRightIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  );
+}
+
 function CalendarIcon() {
   return (
     <svg
@@ -185,25 +204,6 @@ function PhoneIcon() {
       aria-hidden="true"
     >
       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-    </svg>
-  );
-}
-
-function ChevronRight() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="m9 18 6-6-6-6" />
     </svg>
   );
 }
@@ -261,7 +261,7 @@ function PracticeAreaPills({ areas }: { areas: PracticeAreaTag[] }) {
       {areas.map((area) => (
         <span
           key={area.label}
-          className="rounded-full border border-[#c9a84c]/20 bg-[#c9a84c]/[0.06] px-3 py-1 text-xs font-medium text-[#b0912e]"
+          className="rounded-full border border-[#1A5C6B]/20 bg-[#1A5C6B]/[0.05] px-3 py-1 text-xs font-medium text-[#1A5C6B]"
         >
           {area.label}
         </span>
@@ -273,9 +273,12 @@ function PracticeAreaPills({ areas }: { areas: PracticeAreaTag[] }) {
 function EducationSection({ education }: { education: Education[] }) {
   return (
     <div className="mt-8">
-      <div className="mb-4 flex items-center gap-2 text-[#0a1628]">
+      <div className="mb-4 flex items-center gap-2 text-[#1C2A32]">
         <GraduationIcon />
-        <h4 className="text-sm font-semibold uppercase tracking-wider">
+        <h4
+          className="text-sm font-semibold uppercase tracking-wider"
+          style={{ fontFamily: "var(--font-body)" }}
+        >
           Education
         </h4>
       </div>
@@ -283,17 +286,17 @@ function EducationSection({ education }: { education: Education[] }) {
         {education.map((edu) => (
           <div
             key={`${edu.degree}-${edu.institution}`}
-            className="rounded-lg border border-[#e2e8f0] bg-[#fafaf8] px-4 py-3"
+            className="rounded-lg border border-[#E8E4DF] bg-[#F5F2EE] px-4 py-3"
           >
-            <p className="text-sm font-semibold text-[#0a1628]">
+            <p className="text-sm font-semibold text-[#1C2A32]">
               {edu.degree}
             </p>
-            <p className="mt-0.5 text-sm text-[#64748b]">
+            <p className="mt-0.5 text-sm text-[#5A6B75]">
               {edu.institution}
               {edu.year ? ` (${edu.year})` : ""}
             </p>
             {edu.note && (
-              <p className="mt-1 text-xs text-[#64748b]">{edu.note}</p>
+              <p className="mt-1 text-xs text-[#8A959D]">{edu.note}</p>
             )}
           </div>
         ))}
@@ -305,8 +308,10 @@ function EducationSection({ education }: { education: Education[] }) {
 function LicenseSection({ states }: { states: string[] }) {
   return (
     <div className="mt-6 flex items-center gap-2">
-      <ScaleIcon />
-      <p className="text-sm font-medium text-[#334155]">
+      <span className="text-[#1A5C6B]">
+        <ScaleIcon />
+      </span>
+      <p className="text-sm font-medium text-[#1C2A32]">
         Licensed in {states.join(" & ")}
       </p>
     </div>
@@ -331,7 +336,7 @@ function TeamMemberSection({
   return (
     <section
       id={member.name.toLowerCase().replace(/\s+/g, "-").replace(/\./g, "")}
-      className={`py-16 md:py-20 ${index % 2 === 0 ? "bg-white" : "bg-[#fafaf8]"}`}
+      className={`py-16 md:py-20 ${index % 2 === 0 ? "bg-white" : "bg-[#F5F2EE]"}`}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         <div
@@ -346,7 +351,7 @@ function TeamMemberSection({
             }`}
           >
             <div className="sticky top-24">
-              <div className="relative mx-auto aspect-[3/4] max-w-[280px] overflow-hidden rounded-2xl border-2 border-[#e2e8f0] shadow-[0_8px_40px_rgba(0,0,0,0.08)] lg:max-w-none">
+              <div className="relative mx-auto aspect-[3/4] max-w-[280px] overflow-hidden rounded-xl border-2 border-[#E8E4DF] shadow-[0_8px_40px_rgba(15,29,42,0.08)] lg:max-w-none">
                 <Image
                   src={member.image}
                   alt={`${member.name}, ${member.title} at Law Better, LLC`}
@@ -355,8 +360,8 @@ function TeamMemberSection({
                   sizes="(max-width: 1024px) 280px, 33vw"
                   priority={index < 2}
                 />
-                {/* Subtle gold accent at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c9a84c] to-[#d4b96a]" />
+                {/* Accent line at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1A5C6B] to-[#C4963C]" />
               </div>
             </div>
           </div>
@@ -369,10 +374,10 @@ function TeamMemberSection({
           >
             {/* Name & Title */}
             <div className="mb-6">
-              <h2 className="text-2xl font-bold tracking-tight text-[#0a1628] sm:text-3xl md:text-4xl">
+              <h2 className="font-serif text-[#1C2A32]">
                 {member.name}
               </h2>
-              <p className="mt-2 text-lg font-semibold text-[#c9a84c]">
+              <p className="mt-2 text-lg font-semibold text-[#1A5C6B]">
                 {member.title}
               </p>
             </div>
@@ -380,7 +385,10 @@ function TeamMemberSection({
             {/* Practice Areas */}
             {member.practiceAreas && member.practiceAreas.length > 0 && (
               <div className="mb-8">
-                <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-[#64748b]">
+                <h3
+                  className="mb-3 text-xs font-semibold uppercase tracking-wider text-[#8A959D]"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
                   Primary Areas of Practice
                 </h3>
                 <PracticeAreaPills areas={member.practiceAreas} />
@@ -393,7 +401,7 @@ function TeamMemberSection({
                 {member.bio?.map((paragraph, i) => (
                   <p
                     key={i}
-                    className="text-base leading-relaxed text-[#334155]"
+                    className="text-base leading-relaxed text-[#5A6B75]"
                   >
                     {paragraph}
                   </p>
@@ -403,7 +411,7 @@ function TeamMemberSection({
 
             {/* Role Description (for non-attorney members) */}
             {member.role && !hasFullBio && (
-              <p className="text-base leading-relaxed text-[#334155]">
+              <p className="text-base leading-relaxed text-[#5A6B75]">
                 {member.role}
               </p>
             )}
@@ -433,18 +441,18 @@ export default function OurTeamPage() {
     <>
       {/* ================================================================
           HERO SECTION
-          Interior page hero. Navy gradient. Breadcrumb context.
+          Interior page hero. Dark bg. Breadcrumb context.
           ================================================================ */}
-      <section className="relative flex items-end overflow-hidden bg-[#0a1628] pb-16 pt-32 sm:pb-20 sm:pt-36 md:pb-24 md:pt-40">
+      <section className="relative flex items-end overflow-hidden bg-[#0F1D2A] pb-16 pt-32 sm:pb-20 sm:pt-36 md:pb-24 md:pt-40">
         {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0f1d32] to-[#0a1628]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F1D2A] via-[#162330] to-[#0F1D2A]" />
 
         {/* Floating gradient orb for depth */}
         <div
-          className="absolute right-[10%] top-[20%] h-[400px] w-[400px] rounded-full opacity-[0.06]"
+          className="absolute right-[10%] top-[20%] h-[400px] w-[400px] rounded-full opacity-[0.05]"
           style={{
             background:
-              "radial-gradient(circle, #c9a84c 0%, transparent 70%)",
+              "radial-gradient(circle, #1A5C6B 0%, transparent 70%)",
           }}
         />
 
@@ -466,28 +474,32 @@ export default function OurTeamPage() {
               <li>
                 <Link
                   href="/"
-                  className="font-medium text-white/50 no-underline transition-colors duration-200 hover:text-white/80"
+                  className="text-[#F1EDE8]/50 no-underline transition-colors duration-200 hover:text-[#F1EDE8]"
                 >
                   Home
                 </Link>
               </li>
-              <li className="text-white/30">
-                <ChevronRight />
+              <li className="text-[#F1EDE8]/30">
+                <ChevronRightIcon />
               </li>
               <li>
-                <span className="font-medium text-[#c9a84c]">Our Team</span>
+                <span className="font-medium text-[#1A5C6B]">Our Team</span>
               </li>
             </ol>
           </nav>
 
           {/* Heading */}
-          <h1 className="animate-fade-in-up text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
+          <div className="divider-accent mb-5" />
+          <h1 className="animate-fade-in-up font-serif text-[#F1EDE8]">
             Our Team
           </h1>
-          <p className="mt-4 max-w-xl animate-fade-in-up delay-100 text-base leading-relaxed text-white/50 sm:text-lg md:text-xl">
+          <p className="mt-4 max-w-xl animate-fade-in-up delay-100 text-base leading-relaxed text-[#F1EDE8]/50 sm:text-lg md:text-xl">
             Dedicated Professionals Committed to Your Success
           </p>
         </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
       </section>
 
       {/* ================================================================
@@ -502,22 +514,22 @@ export default function OurTeamPage() {
           CTA SECTION
           They've read about the team. They trust. Close it.
           ================================================================ */}
-      <section className="relative overflow-hidden bg-[#0a1628] py-24 sm:py-32">
+      <section className="dark-section relative overflow-hidden bg-[#0F1D2A] py-24 sm:py-32">
         {/* Background accent */}
         <div
           className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.04]"
           style={{
             background:
-              "radial-gradient(circle, #c9a84c 0%, transparent 70%)",
+              "radial-gradient(circle, #1A5C6B 0%, transparent 70%)",
           }}
         />
 
         <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-          <div className="divider-gold mx-auto mb-6" />
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <div className="divider-accent mx-auto mb-6" />
+          <h2 className="font-serif text-[#F1EDE8]">
             Work With Our Team
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/50 md:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed md:text-lg">
             Schedule your free consultation today and let our experienced team
             help you navigate the legal system with confidence.
           </p>
@@ -528,7 +540,7 @@ export default function OurTeamPage() {
               href={CONSULTATION_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-lg group inline-flex items-center gap-2.5 rounded-xl bg-[#c9a84c] px-8 py-4 text-base font-semibold text-[#0a1628] shadow-lg shadow-[#c9a84c]/20 transition-all duration-200 no-underline hover:bg-[#d4b96a] hover:shadow-xl hover:shadow-[#c9a84c]/30 active:scale-[0.98]"
+              className="btn btn-primary btn-lg inline-flex items-center gap-2.5"
             >
               <CalendarIcon />
               Schedule Free Consultation
@@ -537,10 +549,12 @@ export default function OurTeamPage() {
 
           {/* Phone */}
           <div className="mt-8 flex items-center justify-center gap-2">
-            <PhoneIcon />
+            <span className="text-[#F1EDE8]/40">
+              <PhoneIcon />
+            </span>
             <a
               href={PHONE_HREF}
-              className="text-base font-medium text-white/60 no-underline transition-colors duration-200 hover:text-white"
+              className="text-base font-medium text-[#F1EDE8]/60 no-underline transition-colors duration-200 hover:text-[#F1EDE8]"
             >
               {PHONE_NUMBER}
             </a>

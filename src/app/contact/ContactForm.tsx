@@ -45,6 +45,9 @@ export default function ContactForm() {
     console.log("Form submitted:", formData);
   }
 
+  const inputClasses =
+    "w-full rounded-lg border border-[#E8E4DF] bg-white px-4 py-3 text-sm text-[#1C2A32] placeholder:text-[#8A959D] transition-all duration-200 focus:border-[#1A5C6B] focus:outline-none focus:ring-2 focus:ring-[#1A5C6B]/20";
+
   return (
     <form onSubmit={handleSubmit} className="mt-8 space-y-5">
       {/* Name row */}
@@ -52,9 +55,9 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="firstName"
-            className="mb-1.5 block text-sm font-medium text-[#334155]"
+            className="mb-1.5 block text-sm font-medium text-[#1C2A32]"
           >
-            First Name <span className="text-[#c9a84c]">*</span>
+            First Name <span className="text-[#1A5C6B]">*</span>
           </label>
           <input
             type="text"
@@ -64,15 +67,15 @@ export default function ContactForm() {
             value={formData.firstName}
             onChange={handleChange}
             placeholder="John"
-            className="w-full rounded-lg border border-[#e2e8f0] bg-white px-4 py-3 text-sm text-[#334155] placeholder:text-[#94a3b8] transition-all duration-200 focus:border-[#c9a84c] focus:outline-none focus:ring-2 focus:ring-[#c9a84c]/20"
+            className={inputClasses}
           />
         </div>
         <div>
           <label
             htmlFor="lastName"
-            className="mb-1.5 block text-sm font-medium text-[#334155]"
+            className="mb-1.5 block text-sm font-medium text-[#1C2A32]"
           >
-            Last Name <span className="text-[#c9a84c]">*</span>
+            Last Name <span className="text-[#1A5C6B]">*</span>
           </label>
           <input
             type="text"
@@ -82,7 +85,7 @@ export default function ContactForm() {
             value={formData.lastName}
             onChange={handleChange}
             placeholder="Doe"
-            className="w-full rounded-lg border border-[#e2e8f0] bg-white px-4 py-3 text-sm text-[#334155] placeholder:text-[#94a3b8] transition-all duration-200 focus:border-[#c9a84c] focus:outline-none focus:ring-2 focus:ring-[#c9a84c]/20"
+            className={inputClasses}
           />
         </div>
       </div>
@@ -92,9 +95,9 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="mb-1.5 block text-sm font-medium text-[#334155]"
+            className="mb-1.5 block text-sm font-medium text-[#1C2A32]"
           >
-            Email <span className="text-[#c9a84c]">*</span>
+            Email <span className="text-[#1A5C6B]">*</span>
           </label>
           <input
             type="email"
@@ -104,13 +107,13 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleChange}
             placeholder="john@example.com"
-            className="w-full rounded-lg border border-[#e2e8f0] bg-white px-4 py-3 text-sm text-[#334155] placeholder:text-[#94a3b8] transition-all duration-200 focus:border-[#c9a84c] focus:outline-none focus:ring-2 focus:ring-[#c9a84c]/20"
+            className={inputClasses}
           />
         </div>
         <div>
           <label
             htmlFor="phone"
-            className="mb-1.5 block text-sm font-medium text-[#334155]"
+            className="mb-1.5 block text-sm font-medium text-[#1C2A32]"
           >
             Phone
           </label>
@@ -121,7 +124,7 @@ export default function ContactForm() {
             value={formData.phone}
             onChange={handleChange}
             placeholder="(555) 123-4567"
-            className="w-full rounded-lg border border-[#e2e8f0] bg-white px-4 py-3 text-sm text-[#334155] placeholder:text-[#94a3b8] transition-all duration-200 focus:border-[#c9a84c] focus:outline-none focus:ring-2 focus:ring-[#c9a84c]/20"
+            className={inputClasses}
           />
         </div>
       </div>
@@ -130,9 +133,9 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="practiceArea"
-          className="mb-1.5 block text-sm font-medium text-[#334155]"
+          className="mb-1.5 block text-sm font-medium text-[#1C2A32]"
         >
-          How Can We Help? <span className="text-[#c9a84c]">*</span>
+          How Can We Help? <span className="text-[#1A5C6B]">*</span>
         </label>
         <select
           id="practiceArea"
@@ -140,7 +143,7 @@ export default function ContactForm() {
           required
           value={formData.practiceArea}
           onChange={handleChange}
-          className="w-full appearance-none rounded-lg border border-[#e2e8f0] bg-white px-4 py-3 text-sm text-[#334155] transition-all duration-200 focus:border-[#c9a84c] focus:outline-none focus:ring-2 focus:ring-[#c9a84c]/20"
+          className={`${inputClasses} appearance-none`}
         >
           <option value="" disabled>
             Select a practice area
@@ -157,9 +160,9 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="mb-1.5 block text-sm font-medium text-[#334155]"
+          className="mb-1.5 block text-sm font-medium text-[#1C2A32]"
         >
-          Message <span className="text-[#c9a84c]">*</span>
+          Message <span className="text-[#1A5C6B]">*</span>
         </label>
         <textarea
           id="message"
@@ -169,20 +172,20 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleChange}
           placeholder="Tell us about your situation..."
-          className="w-full resize-vertical rounded-lg border border-[#e2e8f0] bg-white px-4 py-3 text-sm leading-relaxed text-[#334155] placeholder:text-[#94a3b8] transition-all duration-200 focus:border-[#c9a84c] focus:outline-none focus:ring-2 focus:ring-[#c9a84c]/20"
+          className={`${inputClasses} resize-vertical leading-relaxed`}
         />
       </div>
 
       {/* Submit */}
       <button
         type="submit"
-        className="btn btn-lg w-full rounded-xl bg-[#c9a84c] px-8 py-4 text-base font-semibold text-[#0a1628] shadow-lg shadow-[#c9a84c]/20 transition-all duration-200 hover:bg-[#d4b96a] hover:shadow-xl hover:shadow-[#c9a84c]/30 active:scale-[0.98] sm:w-auto"
+        className="btn btn-primary btn-lg w-full sm:w-auto"
       >
         Send Message
       </button>
 
       {/* Disclaimer */}
-      <p className="text-xs leading-relaxed text-[#94a3b8]">
+      <p className="text-xs leading-relaxed text-[#8A959D]">
         This form does not create an attorney-client relationship. Information
         submitted is not considered privileged or confidential.
       </p>

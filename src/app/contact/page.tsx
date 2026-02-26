@@ -25,6 +25,25 @@ const LINKEDIN_URL = "https://www.linkedin.com/in/andrew-klaas-esq/";
    Icons (inline SVG for zero network requests)
    ========================================================================== */
 
+function ChevronRightIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  );
+}
+
 function PhoneIcon() {
   return (
     <svg
@@ -150,25 +169,6 @@ function ScaleIcon() {
   );
 }
 
-function ChevronRightIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      <path d="m9 18 6-6-6-6" />
-    </svg>
-  );
-}
-
 /* ==========================================================================
    Page Component
    ========================================================================== */
@@ -178,18 +178,18 @@ export default function ContactPage() {
     <>
       {/* ================================================================
           HERO SECTION
-          Navy gradient. Breadcrumb context. Interior page pattern.
+          Dark bg. Breadcrumb context. Interior page pattern.
           ================================================================ */}
-      <section className="relative overflow-hidden bg-[#0a1628]">
+      <section className="relative overflow-hidden bg-[#0F1D2A]">
         {/* Gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a1628] via-[#0f1d32] to-[#0a1628]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F1D2A] via-[#162330] to-[#0F1D2A]" />
 
-        {/* Subtle gold orb */}
+        {/* Subtle teal orb */}
         <div
           className="absolute right-[10%] top-[30%] h-[400px] w-[400px] rounded-full opacity-[0.05]"
           style={{
             background:
-              "radial-gradient(circle, #c9a84c 0%, transparent 70%)",
+              "radial-gradient(circle, #1A5C6B 0%, transparent 70%)",
           }}
         />
 
@@ -212,40 +212,43 @@ export default function ContactPage() {
           >
             <Link
               href="/"
-              className="text-white/40 no-underline transition-colors duration-200 hover:text-white/70"
+              className="text-[#F1EDE8]/50 no-underline transition-colors duration-200 hover:text-[#F1EDE8]"
             >
               Home
             </Link>
-            <ChevronRightIcon />
-            <span className="text-[#c9a84c]">Contact</span>
+            <span className="text-[#F1EDE8]/30">
+              <ChevronRightIcon />
+            </span>
+            <span className="font-medium text-[#1A5C6B]">Contact</span>
           </nav>
 
-          <h1 className="animate-fade-in-up delay-100 text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+          <div className="divider-accent mb-5 animate-fade-in-up delay-100" />
+          <h1 className="animate-fade-in-up delay-100 font-serif text-[#F1EDE8]">
             Contact Us
           </h1>
-          <p className="mt-4 max-w-xl animate-fade-in-up delay-200 text-base leading-relaxed text-white/50 sm:text-lg">
+          <p className="mt-4 max-w-xl animate-fade-in-up delay-200 text-base leading-relaxed text-[#F1EDE8]/50 sm:text-lg">
             We&apos;re here to help. Reach out today.
           </p>
         </div>
 
         {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#fafaf8] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#FAFAF8] to-transparent" />
       </section>
 
       {/* ================================================================
           MAIN CONTENT -- Two Column Layout
-          Left: Form. Right: Info cards.
+          Left: Form (3/5). Right: Info cards (2/5).
           ================================================================ */}
-      <section className="section-padding bg-[#fafaf8]">
+      <section className="section-padding bg-[#FAFAF8]">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16">
             {/* ---- Left Column: Form (3/5 width) ---- */}
             <div className="lg:col-span-3">
-              <div className="divider-gold mb-5" />
-              <h2 className="text-3xl font-bold tracking-tight text-[#0a1628] sm:text-4xl">
+              <div className="divider-accent mb-5" />
+              <h2 className="font-serif text-[#1C2A32]">
                 Get in Touch
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-[#64748b] md:text-lg">
+              <p className="mt-4 text-base leading-relaxed text-[#5A6B75] md:text-lg">
                 Ready to discuss your legal needs? Schedule a free consultation
                 or reach out directly. We respond to all inquiries within one
                 business day.
@@ -256,23 +259,23 @@ export default function ContactPage() {
 
             {/* ---- Right Column: Info Cards (2/5 width) ---- */}
             <div className="space-y-6 lg:col-span-2">
-              {/* Office Information Card */}
+              {/* Office Information Card -- glass effect */}
               <div className="glass rounded-2xl p-6 sm:p-8">
-                <h3 className="mb-5 text-lg font-bold text-[#0a1628]">
+                <h3 className="mb-5 font-serif text-[#1C2A32]">
                   Office Information
                 </h3>
 
                 <div className="space-y-4">
                   {/* Address */}
                   <div className="flex items-start gap-3">
-                    <div className="mt-0.5 flex-shrink-0 text-[#c9a84c]">
+                    <div className="mt-0.5 flex-shrink-0 text-[#1A5C6B]">
                       <MapPinIcon />
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-[#334155]">
+                      <p className="text-sm font-medium text-[#1C2A32]">
                         1600 McConnor Parkway, 11th Floor
                       </p>
-                      <p className="text-sm text-[#64748b]">
+                      <p className="text-sm text-[#5A6B75]">
                         Schaumburg, Illinois 60173
                       </p>
                     </div>
@@ -280,12 +283,12 @@ export default function ContactPage() {
 
                   {/* Phone */}
                   <div className="flex items-center gap-3">
-                    <div className="flex-shrink-0 text-[#c9a84c]">
+                    <div className="flex-shrink-0 text-[#1A5C6B]">
                       <PhoneIcon />
                     </div>
                     <a
                       href={PHONE_HREF}
-                      className="text-sm font-medium text-[#334155] no-underline transition-colors duration-200 hover:text-[#c9a84c]"
+                      className="text-sm font-medium text-[#1C2A32] no-underline transition-colors duration-200 hover:text-[#1A5C6B]"
                     >
                       {PHONE_NUMBER}
                     </a>
@@ -293,14 +296,14 @@ export default function ContactPage() {
 
                   {/* LinkedIn */}
                   <div className="flex items-center gap-3">
-                    <div className="flex-shrink-0 text-[#c9a84c]">
+                    <div className="flex-shrink-0 text-[#1A5C6B]">
                       <LinkedInIcon />
                     </div>
                     <a
                       href={LINKEDIN_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-medium text-[#334155] no-underline transition-colors duration-200 hover:text-[#c9a84c]"
+                      className="text-sm font-medium text-[#1C2A32] no-underline transition-colors duration-200 hover:text-[#1A5C6B]"
                     >
                       Connect on LinkedIn
                     </a>
@@ -308,10 +311,10 @@ export default function ContactPage() {
 
                   {/* Licensed */}
                   <div className="flex items-center gap-3">
-                    <div className="flex-shrink-0 text-[#c9a84c]">
+                    <div className="flex-shrink-0 text-[#1A5C6B]">
                       <ScaleIcon />
                     </div>
-                    <p className="text-sm font-medium text-[#334155]">
+                    <p className="text-sm font-medium text-[#1C2A32]">
                       Licensed in Illinois &amp; Indiana
                     </p>
                   </div>
@@ -319,11 +322,11 @@ export default function ContactPage() {
               </div>
 
               {/* Schedule Consultation Card */}
-              <div className="rounded-2xl border border-[#e2e8f0] bg-white p-6 transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] sm:p-8">
-                <h3 className="mb-3 text-lg font-bold text-[#0a1628]">
+              <div className="rounded-2xl border border-[#E8E4DF] bg-white p-6 transition-all duration-300 hover:shadow-[0_8px_40px_rgba(15,29,42,0.06)] sm:p-8">
+                <h3 className="mb-3 font-serif text-[#1C2A32]">
                   Schedule a Consultation
                 </h3>
-                <p className="text-sm leading-relaxed text-[#64748b]">
+                <p className="text-sm leading-relaxed text-[#5A6B75]">
                   Prefer to book directly? Schedule your free consultation
                   online.
                 </p>
@@ -331,7 +334,7 @@ export default function ContactPage() {
                   href={CONSULTATION_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn mt-5 inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#c9a84c] px-6 py-3.5 text-sm font-semibold text-[#0a1628] no-underline shadow-lg shadow-[#c9a84c]/20 transition-all duration-200 hover:bg-[#d4b96a] hover:shadow-xl hover:shadow-[#c9a84c]/30 active:scale-[0.98]"
+                  className="btn btn-primary mt-5 inline-flex w-full items-center justify-center gap-2.5"
                 >
                   <CalendarIcon />
                   Schedule Free Consultation
@@ -339,20 +342,23 @@ export default function ContactPage() {
               </div>
 
               {/* Office Hours Card */}
-              <div className="rounded-2xl border border-[#e2e8f0] bg-white p-6 transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] sm:p-8">
+              <div className="rounded-2xl border border-[#E8E4DF] bg-white p-6 transition-all duration-300 hover:shadow-[0_8px_40px_rgba(15,29,42,0.06)] sm:p-8">
                 <div className="flex items-center gap-3">
-                  <div className="flex-shrink-0 text-[#c9a84c]">
+                  <div className="flex-shrink-0 text-[#1A5C6B]">
                     <ClockIcon />
                   </div>
-                  <h3 className="text-lg font-bold text-[#0a1628]">
+                  <h3 className="font-serif text-[#1C2A32]">
                     Office Hours
                   </h3>
                 </div>
-                <div className="mt-4 rounded-xl bg-[#0a1628]/[0.03] px-5 py-4">
-                  <p className="text-sm font-semibold uppercase tracking-wider text-[#0a1628]">
+                <div className="mt-4 rounded-xl bg-[#F5F2EE] px-5 py-4">
+                  <p
+                    className="text-sm font-semibold uppercase tracking-wider text-[#1C2A32]"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  >
                     By Appointment
                   </p>
-                  <p className="mt-1 text-xs leading-relaxed text-[#64748b]">
+                  <p className="mt-1 text-xs leading-relaxed text-[#8A959D]">
                     We provide personalized service on your schedule. Contact us
                     to arrange a convenient time.
                   </p>
@@ -365,23 +371,23 @@ export default function ContactPage() {
 
       {/* ================================================================
           BOTTOM CTA SECTION
-          Navy background. Final conversion push.
+          Dark background. Final conversion push.
           ================================================================ */}
-      <section className="relative overflow-hidden bg-[#0a1628] py-24 sm:py-32">
+      <section className="dark-section relative overflow-hidden bg-[#0F1D2A] py-24 sm:py-32">
         {/* Background accent */}
         <div
           className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.04]"
           style={{
             background:
-              "radial-gradient(circle, #c9a84c 0%, transparent 70%)",
+              "radial-gradient(circle, #1A5C6B 0%, transparent 70%)",
           }}
         />
 
         <div className="relative z-10 mx-auto max-w-3xl px-5 text-center sm:px-8">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="font-serif text-[#F1EDE8]">
             Don&apos;t Wait. Take the First Step Today.
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/50 md:text-lg">
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed md:text-lg">
             Your legal matter deserves immediate attention. Reach out now and
             let us start working for you.
           </p>
@@ -392,7 +398,7 @@ export default function ContactPage() {
               href={CONSULTATION_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-lg group inline-flex items-center gap-2.5 rounded-xl bg-[#c9a84c] px-8 py-4 text-base font-semibold text-[#0a1628] shadow-lg shadow-[#c9a84c]/20 transition-all duration-200 no-underline hover:bg-[#d4b96a] hover:shadow-xl hover:shadow-[#c9a84c]/30 active:scale-[0.98]"
+              className="btn btn-primary btn-lg inline-flex items-center gap-2.5"
             >
               <CalendarIcon />
               Schedule Free Consultation
@@ -400,11 +406,13 @@ export default function ContactPage() {
           </div>
 
           {/* Phone */}
-          <div className="mt-8 flex items-center justify-center gap-2 text-white/60">
-            <PhoneIcon />
+          <div className="mt-8 flex items-center justify-center gap-2">
+            <span className="text-[#F1EDE8]/40">
+              <PhoneIcon />
+            </span>
             <a
               href={PHONE_HREF}
-              className="text-base font-medium text-white/60 no-underline transition-colors duration-200 hover:text-white"
+              className="text-base font-medium text-[#F1EDE8]/60 no-underline transition-colors duration-200 hover:text-[#F1EDE8]"
             >
               {PHONE_NUMBER}
             </a>
