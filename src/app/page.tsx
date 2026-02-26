@@ -18,6 +18,8 @@ interface PracticeArea {
   description: string;
   href: string;
   icon: React.ReactNode;
+  image: string;
+  imageAlt: string;
 }
 
 const practiceAreas: PracticeArea[] = [
@@ -27,6 +29,8 @@ const practiceAreas: PracticeArea[] = [
       "Divorce, custody, child support, orders of protection, and domestic disputes. We fight for your family\u2019s future with compassion and tenacity.",
     href: "/areas-of-practice/family-law",
     icon: <FamilyIcon />,
+    image: "/images/generated/family-consultation.webp",
+    imageAlt: "Attorney consulting with client about family law matters",
   },
   {
     title: "Estate Planning",
@@ -34,6 +38,8 @@ const practiceAreas: PracticeArea[] = [
       "Wills, trusts, powers of attorney, and guardianship. Protect what matters most with a plan built for your peace of mind.",
     href: "/areas-of-practice/estate-planning",
     icon: <EstateIcon />,
+    image: "/images/generated/estate-planning.webp",
+    imageAlt: "Multi-generational family discussing estate planning",
   },
   {
     title: "Business Law",
@@ -41,6 +47,8 @@ const practiceAreas: PracticeArea[] = [
       "Formation, contracts, service of process, and litigation. From startup to courtroom, we\u2019ve got you covered.",
     href: "/areas-of-practice/business-law",
     icon: <BusinessIcon />,
+    image: "/images/generated/business-meeting.webp",
+    imageAlt: "Professionals meeting to discuss business legal matters",
   },
   {
     title: "Personal Injury",
@@ -48,6 +56,8 @@ const practiceAreas: PracticeArea[] = [
       "Car accidents, wrongful death, slip and fall, dog bites, and premises liability. Justice and compensation for the injured.",
     href: "/areas-of-practice/personal-injury",
     icon: <InjuryIcon />,
+    image: "/images/generated/personal-injury.webp",
+    imageAlt: "Attorney reviewing personal injury case with client",
   },
 ];
 
@@ -485,8 +495,9 @@ export default function HomePage() {
 
       {/* ================================================================
           SECTION 4: PRACTICE AREAS
-          "What We Fight For" -- Bento grid. 4 cards. Tease, don't
-          over-explain. Each earns a click to its subpage.
+          "What We Fight For" -- Bento grid. 4 cards with images.
+          Each card has a contextual photo at the top, transforming
+          from text-only to visually rich. Tease, don't over-explain.
           ================================================================ */}
       <section
         id="practice-areas"
@@ -510,23 +521,39 @@ export default function HomePage() {
               <Link
                 key={area.title}
                 href={area.href}
-                className="group relative rounded-2xl border border-[#E8E4DF] bg-white p-8 no-underline transition-all duration-300 hover:-translate-y-1 hover:border-[#E8E4DF] hover:shadow-[0_8px_40px_rgba(15,29,42,0.08)] sm:p-10"
+                className="group relative overflow-hidden rounded-2xl border border-[#E8E4DF] bg-white no-underline transition-all duration-300 hover:-translate-y-1 hover:border-[#E8E4DF] hover:shadow-[0_8px_40px_rgba(15,29,42,0.08)]"
               >
-                {/* Icon */}
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#1A5C6B]/[0.08] text-[#1A5C6B] transition-colors duration-300 group-hover:bg-[#1A5C6B]/[0.12]">
-                  {area.icon}
+                {/* Practice area image */}
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-2xl">
+                  <Image
+                    src={area.image}
+                    alt={area.imageAlt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                  {/* Subtle bottom gradient so text below stays legible */}
+                  <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-white/20 to-transparent" />
                 </div>
 
-                {/* Title -- h3 gets DM Serif Display from globals */}
-                <h3 className="mb-3 text-[#1C2A32]">{area.title}</h3>
-                <p className="text-sm leading-relaxed text-[#5A6B75]">
-                  {area.description}
-                </p>
+                {/* Card content */}
+                <div className="p-8 sm:p-10">
+                  {/* Icon */}
+                  <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#1A5C6B]/[0.08] text-[#1A5C6B] transition-colors duration-300 group-hover:bg-[#1A5C6B]/[0.12]">
+                    {area.icon}
+                  </div>
 
-                {/* "Learn more" link -- appears on hover */}
-                <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-[#1A5C6B] opacity-0 transition-all duration-300 group-hover:opacity-100">
-                  Learn more
-                  <ArrowRight />
+                  {/* Title -- h3 gets DM Serif Display from globals */}
+                  <h3 className="mb-3 text-[#1C2A32]">{area.title}</h3>
+                  <p className="text-sm leading-relaxed text-[#5A6B75]">
+                    {area.description}
+                  </p>
+
+                  {/* "Learn more" link -- appears on hover */}
+                  <div className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-[#1A5C6B] opacity-0 transition-all duration-300 group-hover:opacity-100">
+                    Learn more
+                    <ArrowRight />
+                  </div>
                 </div>
 
                 {/* Teal accent line at bottom on hover */}
@@ -584,10 +611,10 @@ export default function HomePage() {
 
             {/* Right column: image + mission quote */}
             <div className="flex flex-col gap-6">
-              {/* Professional office image placeholder */}
+              {/* Professional office image */}
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#E8E4DF]">
                 <Image
-                  src="/images/generated/office-interior.webp"
+                  src="/images/generated/hero-office.webp"
                   alt="Law Better LLC office interior - professional legal environment"
                   fill
                   className="object-cover"
@@ -724,14 +751,26 @@ export default function HomePage() {
           SECTION 8: TESTIMONIALS
           Social proof on dark background. 3 cards. Glass-dark effect.
           Real-sounding quotes with first name + case type.
+          Scales of justice decorative element anchors the section.
           ================================================================ */}
       <section
-        className="dark-section section-padding bg-[#0F1D2A]"
+        className="dark-section section-padding relative bg-[#0F1D2A]"
         aria-label="Client testimonials"
       >
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-          {/* Section header */}
+          {/* Section header with scales-justice decorative image */}
           <div className="mb-14 text-center md:mb-20">
+            {/* Scales of justice -- subtle decorative element */}
+            <div className="relative mx-auto mb-6 h-16 w-16 opacity-20">
+              <Image
+                src="/images/generated/scales-justice.webp"
+                alt=""
+                fill
+                className="object-contain"
+                sizes="64px"
+                aria-hidden="true"
+              />
+            </div>
             <div className="divider-accent mx-auto mb-5" />
             <h2 className="text-[#F1EDE8]">What Our Clients Say</h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-[rgba(241,237,232,0.5)] md:text-lg">
@@ -775,15 +814,28 @@ export default function HomePage() {
       {/* ================================================================
           SECTION 9: CTA SECTION
           They scrolled this far -- they're warm. Close it.
-          Dark background. Subtle gradient orb. Single clear CTA.
-          Phone number. Address. Final conversion push.
+          Consultation room background image with dark overlay.
+          Single clear CTA. Phone number. Address. Final conversion push.
           ================================================================ */}
       <section
         id="contact"
         className="dark-section relative overflow-hidden bg-[#0F1D2A] py-24 sm:py-32"
         aria-label="Contact us"
       >
-        {/* Subtle gradient orb */}
+        {/* Background image -- consultation room with dark overlay */}
+        <Image
+          src="/images/generated/consultation-room.webp"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+          aria-hidden="true"
+          priority={false}
+        />
+        {/* Dark overlay -- ensures text legibility */}
+        <div className="absolute inset-0 bg-[#0F1D2A]/85" />
+
+        {/* Subtle gradient orb on top of overlay for depth */}
         <div
           className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.05]"
           style={{

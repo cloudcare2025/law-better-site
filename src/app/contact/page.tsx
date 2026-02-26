@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import ContactForm from "./ContactForm";
 
 /* ==========================================================================
@@ -233,6 +234,25 @@ export default function ContactPage() {
 
         {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#FAFAF8] to-transparent" />
+      </section>
+
+      {/* ================================================================
+          FEATURED IMAGE
+          Consultation room image between hero and form content.
+          ================================================================ */}
+      <section className="bg-[#FAFAF8] px-5 pt-12 sm:px-8 sm:pt-16 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-2xl shadow-[0_8px_40px_rgba(15,29,42,0.10)]">
+            <Image
+              src="/images/generated/consultation-room.webp"
+              alt="Warm, inviting consultation room at Law Better offices"
+              fill
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="object-cover"
+              priority
+            />
+          </div>
+        </div>
       </section>
 
       {/* ================================================================

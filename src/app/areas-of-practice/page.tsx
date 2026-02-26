@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 /* ==========================================================================
    Constants
@@ -15,6 +16,8 @@ interface PracticeAreaCard {
   description: string;
   href: string;
   icon: React.ReactNode;
+  image: string;
+  imageAlt: string;
   services: string[];
 }
 
@@ -25,6 +28,8 @@ const practiceAreas: PracticeAreaCard[] = [
       "Divorce, custody, child support, orders of protection, and domestic disputes. We fight for your family's future.",
     href: "/areas-of-practice/family-law",
     icon: <FamilyIcon />,
+    image: "/images/generated/family-consultation.webp",
+    imageAlt: "Attorney consulting with family law clients",
     services: [
       "Divorce",
       "Child Custody",
@@ -40,6 +45,8 @@ const practiceAreas: PracticeAreaCard[] = [
       "Wills, trusts, powers of attorney. Protect what matters most with a plan built for your peace of mind.",
     href: "/areas-of-practice/estate-planning",
     icon: <EstateIcon />,
+    image: "/images/generated/estate-planning.webp",
+    imageAlt: "Multi-generational family planning their estate",
     services: [
       "Wills",
       "Trusts",
@@ -54,6 +61,8 @@ const practiceAreas: PracticeAreaCard[] = [
       "Business formation, service, and litigation. From startup to courtroom, we've got you covered.",
     href: "/areas-of-practice/business-law",
     icon: <BusinessIcon />,
+    image: "/images/generated/business-meeting.webp",
+    imageAlt: "Professionals meeting to discuss business legal matters",
     services: [
       "Business Formation",
       "Business Litigation",
@@ -68,6 +77,8 @@ const practiceAreas: PracticeAreaCard[] = [
       "Wrongful death, car accidents, slip and fall, dog bite litigation, premises liability. Justice for the injured.",
     href: "/areas-of-practice/personal-injury",
     icon: <InjuryIcon />,
+    image: "/images/generated/personal-injury.webp",
+    imageAlt: "Attorney consulting with personal injury client",
     services: [
       "Wrongful Death",
       "Car Accidents",
@@ -303,6 +314,7 @@ export default function AreasOfPracticePage() {
       {/* ================================================================
           PRACTICE AREA CARDS
           Bento grid of 4 cards -- larger, more detailed than homepage.
+          Now with featured images at the top of each card.
           ================================================================ */}
       <section className="section-padding bg-[#FAFAF8]">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
@@ -311,37 +323,51 @@ export default function AreasOfPracticePage() {
               <Link
                 key={area.title}
                 href={area.href}
-                className="group relative overflow-hidden rounded-2xl border border-[#E8E4DF] bg-white p-8 no-underline transition-all duration-300 hover:-translate-y-1 hover:border-[#1A5C6B]/30 hover:shadow-[0_8px_40px_rgba(15,29,42,0.08)] sm:p-10"
+                className="group relative overflow-hidden rounded-2xl border border-[#E8E4DF] bg-white no-underline transition-all duration-300 hover:-translate-y-1 hover:border-[#1A5C6B]/30 hover:shadow-[0_8px_40px_rgba(15,29,42,0.08)]"
               >
-                {/* Icon */}
-                <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#1A5C6B]/[0.08] text-[#1A5C6B] transition-colors duration-300 group-hover:bg-[#1A5C6B]/[0.14]">
-                  {area.icon}
+                {/* Card Image */}
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-2xl">
+                  <Image
+                    src={area.image}
+                    alt={area.imageAlt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
 
-                {/* Content */}
-                <h3 className="mb-3 font-serif text-[#1C2A32]">
-                  {area.title}
-                </h3>
-                <p className="mb-6 text-sm leading-relaxed text-[#5A6B75]">
-                  {area.description}
-                </p>
+                {/* Card Content */}
+                <div className="p-8 sm:p-10">
+                  {/* Icon */}
+                  <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[#1A5C6B]/[0.08] text-[#1A5C6B] transition-colors duration-300 group-hover:bg-[#1A5C6B]/[0.14]">
+                    {area.icon}
+                  </div>
 
-                {/* Service pills */}
-                <div className="mb-6 flex flex-wrap gap-2">
-                  {area.services.map((service) => (
-                    <span
-                      key={service}
-                      className="rounded-full border border-[#1A5C6B]/15 bg-[#1A5C6B]/[0.05] px-3 py-1 text-xs font-medium text-[#1A5C6B]"
-                    >
-                      {service}
-                    </span>
-                  ))}
-                </div>
+                  {/* Content */}
+                  <h3 className="mb-3 font-serif text-[#1C2A32]">
+                    {area.title}
+                  </h3>
+                  <p className="mb-6 text-sm leading-relaxed text-[#5A6B75]">
+                    {area.description}
+                  </p>
 
-                {/* Arrow indicator */}
-                <div className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1A5C6B] opacity-0 transition-all duration-300 group-hover:opacity-100">
-                  Learn more
-                  <ArrowRight />
+                  {/* Service pills */}
+                  <div className="mb-6 flex flex-wrap gap-2">
+                    {area.services.map((service) => (
+                      <span
+                        key={service}
+                        className="rounded-full border border-[#1A5C6B]/15 bg-[#1A5C6B]/[0.05] px-3 py-1 text-xs font-medium text-[#1A5C6B]"
+                      >
+                        {service}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Arrow indicator */}
+                  <div className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#1A5C6B] opacity-0 transition-all duration-300 group-hover:opacity-100">
+                    Learn more
+                    <ArrowRight />
+                  </div>
                 </div>
 
                 {/* Accent line on hover */}
